@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Resources">
+
+
+    <SolidColorBrush x:Key="MyBackgroundBrush">Red</SolidColorBrush>
+    
+    <Style x:Key="BaseButtonStyle" TargetType="Button">
+        <!-- Styl bazowy-->
+        <!--Twożymy styl dla przycisku gdy nie ma elementu x:Key to wszyskie elementy button będa przypisane do tego stylu -->
+        <Setter Property="Background" Value="{StaticResource MyBackgroundBrush}" />
+        <!--Dodajemy właściowści-->
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <!--Styl dla przycisków-->
+    <Style  TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+
+    </Style>
+
+    <Style x:Key="MyButtonStyle"  TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <!--Twożymy styl dla przycisku gdy nie ma elementu x:Key to wszyskie elementy button będa przypisane do tego stylu -->
+        <Setter Property="Background" Value="Blue" />
+        <!--Dodajemy właściowści-->
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="CancelButtonStyle"  TargetType="Button" BasedOn="{StaticResource MyButtonStyle}">
+        <!--Twożymy styl dla przycisku gdy nie ma elementu x:Key to wszyskie elementy button będa przypisane do tego stylu -->
+        <Setter Property="Background" Value="Red" />
+        <!--Dodajemy właściowści-->
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+</ResourceDictionary>

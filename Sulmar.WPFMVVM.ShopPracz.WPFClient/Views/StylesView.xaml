@@ -1,0 +1,45 @@
+﻿<Window x:Class="Sulmar.WPFMVVM.ShopPracz.WPFClient.Views.StylesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Views"
+        mc:Ignorable="d"
+        Title="StylesView" Height="300" Width="300">
+    <Window.Resources>
+        <SolidColorBrush x:Key="MyBackgroundBrush">Red</SolidColorBrush> <!-- typ koloru -->
+
+        <sys:Double x:Key="MyWith">50</sys:Double> <!--tworzysz typ double do którego odwołujesz się poprzez przestrzeń nazw z aliasu -->
+
+        <!--<Style  TargetType="Button"> --><!--Twożymy styl dla przycisku gdy nie ma elementu x:Key to wszyskie elementy button będa przypisane do tego stylu --><!--
+            <Setter Property="Background" Value="Red" /> --><!--Dodajemy właściowści--><!--
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="100" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>-->
+       
+
+    </Window.Resources>
+    
+    <Grid>
+        <StackPanel>
+            <Button Style="{StaticResource MyButtonStyle}" >Top</Button>
+            <Button Style="{StaticResource CancelButtonStyle}" >Bottom</Button>
+            <Button >Right</Button>
+            <Button >Open</Button>
+            <Button >Close</Button>
+
+            <!--<Button Style="{StaticResource MyButtonStyle}">Top</Button>
+            <Button Style="{StaticResource MyButtonStyle}">Bottom</Button>-->
+
+
+            <!--<Button Background="{StaticResource MyBackgroundBrush}"
+                    Width="{StaticResource MyWith}">Top</Button>
+            <Button Background="{StaticResource MyBackgroundBrush}">Bottom</Button>
+            <Button Background="{StaticResource MyBackgroundBrush}">Right</Button>
+            <Button Background="{StaticResource MyBackgroundBrush}">Open</Button>
+            <Button Background="Green">Close</Button>-->
+        </StackPanel>
+    </Grid>
+</Window>

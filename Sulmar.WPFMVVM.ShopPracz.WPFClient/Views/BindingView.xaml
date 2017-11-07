@@ -1,0 +1,22 @@
+﻿<Window x:Class="Sulmar.WPFMVVM.ShopPracz.WPFClient.Views.BindingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Views"
+        mc:Ignorable="d"
+        Title="BindingView" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <TextBox x:Name="MyTextBox"  Text="40" />
+            <Slider Minimum="0"
+                    Maximum="100"
+                    Value="{Binding Text, ElementName=MyTextBox, Mode=OneWayToSource}"
+                    IsSnapToTickEnabled="True"
+                    TickFrequency="1"
+                    />
+            <!-- Łączenie dwóch kontrolek Łączenie do kontrolki i do właściwości -->
+            <!--Mode OneTime działa tylko jeden raz Mode OneWay działa w jedną stronę OneWayToSource działa w drugą stronę-->
+        </StackPanel>
+    </Grid>
+</Window>
