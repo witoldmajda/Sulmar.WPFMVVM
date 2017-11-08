@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviors\ButtonBehavior.cs" />
     <Compile Include="CalculateCommand.cs" />
     <Compile Include="Converters\SegmentStateToBrushConverter.cs" />
     <Compile Include="Views\BindingView.xaml.cs">
