@@ -34,6 +34,7 @@ namespace Sulmar.WPFMVVM.ShopPracz.Services
                     Number = "ZAM 2",
                     OrderDate = DateTime.Now,
                     Customer = customer,
+                    Status = OrderStatus.Processing,
                 },
 
                 new Order
@@ -42,6 +43,7 @@ namespace Sulmar.WPFMVVM.ShopPracz.Services
                     Number = "ZAM 3",
                     OrderDate = DateTime.Now,
                     Customer = customer,
+                    Status = OrderStatus.Delivered,
                 }
             };
         }

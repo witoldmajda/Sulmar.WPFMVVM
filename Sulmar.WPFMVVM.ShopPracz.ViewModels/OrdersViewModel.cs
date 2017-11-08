@@ -1,4 +1,4 @@
-﻿using Sulmar.WPFMVVM.Common;
+﻿using Sulmar.WPFMVVM.Common4;
 using Sulmar.WPFMVVM.ShopPracz.Models;
 using Sulmar.WPFMVVM.ShopPracz.Services;
 using System;
@@ -12,9 +12,22 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
 {
     public class OrdersViewModel : BaseViewModel
     {
-       // public ICollection<Order> Orders { get; set; } // właściwość z listą zamówień do której podpina się projekt
+        // public ICollection<Order> Orders { get; set; } // właściwość z listą zamówień do której podpina się projekt
 
-        public ICollection<Order> Orders { get; set; }
+
+        private ICollection<Order> _orders;
+        public ICollection<Order> Orders
+        {
+            get
+            {
+                return _orders;
+            }
+            set
+            {
+                _orders = value;
+                OnPropertyChanged();
+            }
+        }
 
         //public Order SelectedOrder { get; set; }
 
@@ -26,7 +39,15 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
             set
             {
                 _selectedOrder = value;
+                
+                //wyzwalamy sprawdzenie CanExecute
+
+               // CalculateCommand.OnCanExecuteChanged();
+
                 GetOrderDetailsOfSelectedOrders();
+                OnPropertyChanged();
+
+
             }
         }
 
@@ -47,7 +68,15 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
 
             this.ordersService = ordersService;
             this.orderDetailsService = orderDetailsService;
-            Load();
+            //Load(); zamiennie lepiej wywoływać za pomocą zdarzenia LoadCommand
+        }
+
+        public RelayCommand LoadCommand 
+        {
+            get
+            {
+                return new RelayCommand(p => Load()); 
+            }
         }
 
         private void Load()
@@ -60,7 +89,7 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
             SelectedOrder.Details = orderDetailsService.Get(SelectedOrder.Id);
         }
 
-        public ICommand CalculateCommand
+        public RelayCommand CalculateCommand
         {
             get
             {
@@ -75,7 +104,7 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
 
         private bool CanCalculate(object p)
         {
-            return this.SelectedOrder!=null;
+            return this.SelectedOrder!=null && SelectedOrder.Status == OrderStatus.Created;
         }
 
        

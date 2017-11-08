@@ -10,9 +10,37 @@ namespace Sulmar.WPFMVVM.ShopPracz.Models
 
         public Product Product { get; set; }
 
-        public int Quantity { get; set; }
+        private int _quantity;
 
-        public decimal UnitPrice { get; set; }
+        public int Quantity
+        {
+            get
+            {
+                return _quantity;
+            }
+            set
+            {
+                _quantity = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Amount));
+            }
+        }
+
+        private decimal _unitPrice;
+
+        public decimal UnitPrice
+        {
+            get
+            {
+                return _unitPrice;
+            }
+            set
+            {
+                _unitPrice = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Amount));
+            }
+        }
 
         public decimal Amount
         {

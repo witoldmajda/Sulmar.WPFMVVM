@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sulmar.WPFMVVM.ShopPracz.Vi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sulmar.WPFMVVM.ShopPracz.Services", "Sulmar.WPFMVVM.ShopPracz.Services\Sulmar.WPFMVVM.ShopPracz.Services.csproj", "{85B559CD-C9AD-464A-9EC5-E0D9B70CB715}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sulmar.WPFMVVM.Common", "Sulmar.WPFMVVM.Common\Sulmar.WPFMVVM.Common.csproj", "{27644112-E1EB-45F7-9478-799BBEDD22A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sulmar.WPFMVVM.Common", "Sulmar.WPFMVVM.Common\Sulmar.WPFMVVM.Common.csproj", "{27644112-E1EB-45F7-9478-799BBEDD22A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sulmar.WPFMVVM.Common4", "Sulmar.WPFMVVM.Common4\Sulmar.WPFMVVM.Common4.csproj", "{9FFC5531-F9FF-4B67-8E13-BD4938FEB44F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{27644112-E1EB-45F7-9478-799BBEDD22A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27644112-E1EB-45F7-9478-799BBEDD22A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27644112-E1EB-45F7-9478-799BBEDD22A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FFC5531-F9FF-4B67-8E13-BD4938FEB44F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FFC5531-F9FF-4B67-8E13-BD4938FEB44F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FFC5531-F9FF-4B67-8E13-BD4938FEB44F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FFC5531-F9FF-4B67-8E13-BD4938FEB44F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

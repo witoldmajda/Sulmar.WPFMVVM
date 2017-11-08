@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:v="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Views"
         xmlns:vm="clr-namespace:Sulmar.WPFMVVM.ShopPracz.ViewModels;assembly=Sulmar.WPFMVVM.ShopPracz.ViewModels"
+       
         mc:Ignorable="d"
         Title="FilterView" Height="300" Width="300">
+    
+    
     <Window.DataContext>
         <vm:FilterViewModel />
     </Window.DataContext>

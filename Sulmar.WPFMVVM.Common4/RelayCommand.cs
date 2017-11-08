@@ -1,22 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sulmar.WPFMVVM.Common
+namespace Sulmar.WPFMVVM.Common4
 {
-
     //komneda przelotka
 
     public class RelayCommand : ICommand  //relay służy do wywoływania komend po kliknięciu w przycisk
     {
-        public event EventHandler CanExecuteChanged;
-
-        public void OnCanExecuteChanged() // jeśli ktoś wybierze zamówienie wysłana notyfikacja to przekaże informacje do CanExecuteChange
+        public event EventHandler CanExecuteChanged
         {
-            if(CanExecuteChanged!=null)
-            {
-                CanExecuteChanged.Invoke(this, EventArgs.Empty);
-            }
+            add { CommandManager.RequerySuggested += value;  }
+            remove { CommandManager.RequerySuggested -= value; }
         }
+
+        //public void OnCanExecuteChanged() // jeśli ktoś wybierze zamówienie wysłana notyfikacja to przekaże informacje do CanExecuteChange
+        //{
+        //    if (CanExecuteChanged != null)
+        //    {
+        //        CanExecuteChanged.Invoke(this, EventArgs.Empty);
+        //    }
+        //}
 
         private readonly Action<object> execute;  //delegat typowany readonly można go zainicjalizować tylko w konstruktorze lub w jego deklaracji, nie można go później zmieniać
 
@@ -35,8 +42,8 @@ namespace Sulmar.WPFMVVM.Common
 
         public void Execute(object parameter)
         {
-            if(execute != null)             // sprawdza czy jest przekazana jakaś akcja
-            execute.Invoke(parameter);  // wywołujemy metody przekazane przez Action
+            if (execute != null)             // sprawdza czy jest przekazana jakaś akcja
+                execute.Invoke(parameter);  // wywołujemy metody przekazane przez Action
 
 
             // execute?.Invoke(parameter);   // można stosować zamiennie od C# 6.0

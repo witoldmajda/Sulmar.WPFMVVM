@@ -38,7 +38,7 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
         {
             get
             {
-                return new RelayCommand(p => Inspection(p), p => CanInspection(p));
+                return new RelayCommand(p => Inspection(p));
             }
           
         }

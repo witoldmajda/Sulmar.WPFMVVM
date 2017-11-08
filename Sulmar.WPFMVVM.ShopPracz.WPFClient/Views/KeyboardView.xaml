@@ -4,36 +4,153 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Views"
+             xmlns:c="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="Blue" />
+        <SolidColorBrush x:Key="OKBrush">Green</SolidColorBrush>
+        <SolidColorBrush x:Key="Failure1Brush">Orange</SolidColorBrush>
+        <SolidColorBrush x:Key="Failure2Brush">Red</SolidColorBrush>
+
+        <Style x:Key="BaseStyle" TargetType="Button" >
+            <Setter Property="Background" Value="{StaticResource OKBrush}" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="24" />
         </Style>
+
+        <Style x:Key="Style1" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Filter.Segments[1].State}" Value="FailureA">
+                    <Setter Property="Background" Value="{StaticResource Failure1Brush}"/>
+                    <Setter Property="Width" Value="100" />
+                    <Setter Property="Height" Value="100" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Filter.Segments[1].State}" Value="FailureB">
+                    <Setter Property="Background" Value="{StaticResource Failure2Brush}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Style2" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Filter.Segments[2].State}" Value="FailureA">
+                    <Setter Property="Background" Value="{StaticResource Failure1Brush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Filter.Segments[2].State}" Value="FailureB">
+                    <Setter Property="Background" Value="{StaticResource Failure2Brush}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Style3" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Filter.Segments[3].State}" Value="FailureA">
+                    <Setter Property="Background" Value="{StaticResource Failure1Brush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Filter.Segments[3].State}" Value="FailureB">
+                    <Setter Property="Background" Value="{StaticResource Failure2Brush}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Style4" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Filter.Segments[4].State}" Value="FailureA">
+                    <Setter Property="Background" Value="{StaticResource Failure1Brush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Filter.Segments[4].State}" Value="FailureB">
+                    <Setter Property="Background" Value="{StaticResource Failure2Brush}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Style5" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Filter.Segments[5].State}" Value="FailureA">
+                    <Setter Property="Background" Value="{StaticResource Failure1Brush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Filter.Segments[5].State}" Value="FailureB">
+                    <Setter Property="Background" Value="{StaticResource Failure2Brush}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Style6" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Filter.Segments[6].State}" Value="FailureA">
+                    <Setter Property="Background" Value="{StaticResource Failure1Brush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Filter.Segments[6].State}" Value="FailureB">
+                    <Setter Property="Background" Value="{StaticResource Failure2Brush}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Style7" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Filter.Segments[7].State}" Value="FailureA">
+                    <Setter Property="Background" Value="{StaticResource Failure1Brush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Filter.Segments[7].State}" Value="FailureB">
+                    <Setter Property="Background" Value="{StaticResource Failure2Brush}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
+        <c:SegmentStateToBrushConverter x:Key="SegmentStateToBrushConverter" />
+        
     </UserControl.Resources>
     <Grid>
         <UniformGrid>
-            <Button Content="{Binding Filter.Segments[0].State}"
+            <Button Content="{Binding Filter.Segments[0].Name}"
                     Command="{Binding InspectionCommand}"
                     CommandParameter="{Binding Filter.Segments[0]}"
-                    Background="Red"
+                    Background="{Binding Filter.Segments[0].State, Converter={StaticResource SegmentStateToBrushConverter}}"
                     />
             <Button Content="{Binding Filter.Segments[1].Name}" 
                     Command="{Binding InspectionCommand}"
                     CommandParameter="{Binding Filter.Segments[1]}"
+                    Style="{StaticResource Style1}"
                     />
             <Button Content="{Binding Filter.Segments[2].Name}"
                     Command="{Binding InspectionCommand}"
                     CommandParameter="{Binding Filter.Segments[2]}"
+                    Style="{StaticResource Style2}"
                     />
-            <Button Content="{Binding Filter.Segments[3].Name}" />
+            
+
+
+            <Button Content="{Binding Filter.Segments[3].Name}"
+                    Command="{Binding InspectionCommand}"
+                    CommandParameter="{Binding Filter.Segments[3]}"
+                    Style="{StaticResource Style3}"
+                    />
+
             <Border BorderThickness="1" BorderBrush="Black" />
-            <Button Content="{Binding Filter.Segments[4].Name}" />
-            <Button Content="{Binding Filter.Segments[5].Name}" />
-            <Button Content="{Binding Filter.Segments[6].Name}" />
-            <Button Content="{Binding Filter.Segments[7].Name}" />
+
+            <Button Content="{Binding Filter.Segments[4].Name}"
+                    Command="{Binding InspectionCommand}"
+                    CommandParameter="{Binding Filter.Segments[4]}"
+                    Style="{StaticResource Style4}"
+                    />
+
+            <Button Content="{Binding Filter.Segments[5].Name}" 
+                    Command="{Binding InspectionCommand}"
+                    CommandParameter="{Binding Filter.Segments[5]}"
+                    Style="{StaticResource Style5}"
+                    />
+
+            <Button Content="{Binding Filter.Segments[6].Name}"
+                    Command="{Binding InspectionCommand}"
+                    CommandParameter="{Binding Filter.Segments[6]}"
+                    Style="{StaticResource Style6}"
+                    />
+
+            <Button Content="{Binding Filter.Segments[7].Name}"
+                    Command="{Binding InspectionCommand}"
+                    CommandParameter="{Binding Filter.Segments[7]}"
+                    Style="{StaticResource Style7}"
+/>
         </UniformGrid>
     </Grid>
 </UserControl>

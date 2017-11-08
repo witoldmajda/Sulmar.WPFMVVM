@@ -5,12 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Views"
         xmlns:vm="clr-namespace:Sulmar.WPFMVVM.ShopPracz.ViewModels;assembly=Sulmar.WPFMVVM.ShopPracz.ViewModels"
-        mc:Ignorable="d"
-        Title="OrdersView" Height="300" Width="300">
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"        
+        Title="OrdersView" Height="300" Width="300"
+        >
+    
+    
     <Window.DataContext>
         <vm:OrdersViewModel />
     </Window.DataContext>
     <!--Twożymy instancję obiektu i podpinamy automatycznie pod dataContext-->
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded"> <!--podpięcie pod zdarzenie okna -->
+            <i:InvokeCommandAction Command="{Binding LoadCommand}" /> <!-- wywołanie komendy po wystąpieniu zdarzenia-->
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <StackPanel>
             <DockPanel>
@@ -40,6 +50,7 @@
                     <DataGridTextColumn Header="Data" Binding="{Binding OrderDate}" />
                     <DataGridTextColumn Header="Klient" Binding="{Binding Customer.Name}" />
                     <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                    <DataGridTextColumn Header="Suma" Binding="{Binding TotalAmount}" IsReadOnly="True" />
                 </DataGrid.Columns>
                 
             </DataGrid>
@@ -53,6 +64,7 @@
                     <DataGridTextColumn Header="Produkt" Binding="{Binding Product.Name}" />
                     <DataGridTextColumn Header="Ilość" Binding="{Binding Quantity}" />
                     <DataGridTextColumn Header="Cena" Binding="{Binding UnitPrice}" />
+                    <DataGridTextColumn Header="Kwota" Binding="{Binding Amount, Mode=OneWay}" IsReadOnly="True"  />
 
                 </DataGrid.Columns>
             </DataGrid>
