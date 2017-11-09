@@ -51,5 +51,9 @@ namespace Sulmar.WPFMVVM.ShopPracz.Models
             }
         }
 
+        public string Size { get; set; }
+
+      
+
     }
 }

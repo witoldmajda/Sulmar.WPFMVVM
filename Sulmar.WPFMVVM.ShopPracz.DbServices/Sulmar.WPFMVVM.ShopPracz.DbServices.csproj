@@ -48,6 +48,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbOrdersService.cs" />
+    <Compile Include="Migrations\201711090947336_InitialCreate.cs" />
+    <Compile Include="Migrations\201711090947336_InitialCreate.Designer.cs">
+      <DependentUpon>201711090947336_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711091101336_AddSizeToProduct.cs" />
+    <Compile Include="Migrations\201711091101336_AddSizeToProduct.Designer.cs">
+      <DependentUpon>201711091101336_AddSizeToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711091111195_AddWeightToProduct.cs" />
+    <Compile Include="Migrations\201711091111195_AddWeightToProduct.Designer.cs">
+      <DependentUpon>201711091111195_AddWeightToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopPraczContext.cs" />
   </ItemGroup>
@@ -64,6 +77,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711090947336_InitialCreate.resx">
+      <DependentUpon>201711090947336_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711091101336_AddSizeToProduct.resx">
+      <DependentUpon>201711091101336_AddSizeToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711091111195_AddWeightToProduct.resx">
+      <DependentUpon>201711091111195_AddWeightToProduct.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
