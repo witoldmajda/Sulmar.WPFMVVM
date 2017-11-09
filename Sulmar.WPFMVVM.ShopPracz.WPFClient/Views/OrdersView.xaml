@@ -29,7 +29,7 @@
                     Command="{Binding CalculateCommand}"
                     Content="Calculate">
                     <i:Interaction.Behaviors>
-                        <b:ButtonBehavior />
+                        <b:ButtonBehavior  Order="{Binding SelectedOrder}"/>
                     </i:Interaction.Behaviors>
                 </Button>
                     

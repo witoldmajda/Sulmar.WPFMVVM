@@ -1,4 +1,5 @@
 ﻿using Sulmar.WPFMVVM.Common4;
+using Sulmar.WPFMVVM.ShopPracz.DbServices;
 using Sulmar.WPFMVVM.ShopPracz.Models;
 using Sulmar.WPFMVVM.ShopPracz.Services;
 using System;
@@ -53,12 +54,13 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
 
 
 
-        private IOrdersService ordersService;
+        private readonly IOrdersService ordersService;
 
-        private IOrderDetailsService orderDetailsService;
+        private readonly IOrderDetailsService orderDetailsService;
 
         public OrdersViewModel()
-            : this(new MockOrdersService(), new MocOrderDetailsService())   
+            //: this(new MockOrdersService(), new MocOrderDetailsService())   //gdy używamy Mocków
+            : this(new DbOrdersService(), new MocOrderDetailsService())  //gdy używamy bazy danych
         {
             // konstruktor wywoływany w momencie  gdy nie będzie podany orderService, taka notacja pozwala wywołanie następnego konstruktora
         }
