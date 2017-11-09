@@ -43,7 +43,9 @@
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="FilterViewModel.cs" />
     <Compile Include="OrdersViewModel.cs" />
+    <Compile Include="ProductsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sulmar.WPFMVVM.Common4\Sulmar.WPFMVVM.Common4.csproj">
