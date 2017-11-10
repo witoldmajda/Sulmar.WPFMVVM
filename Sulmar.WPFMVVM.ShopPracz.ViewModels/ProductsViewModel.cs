@@ -1,4 +1,5 @@
 ﻿using Sulmar.WPFMVVM.Common4;
+using Sulmar.WPFMVVM.ShopPracz.DbServices;
 using Sulmar.WPFMVVM.ShopPracz.Models;
 using Sulmar.WPFMVVM.ShopPracz.Services;
 using System;
@@ -40,7 +41,8 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
         }
 
         public ProductsViewModel()
-            : this(new MockProductService())
+            //: this(new MockProductService()) // gdy kożystamy z Moc używamy metod Moc
+            : this(new DbProductService()) // gdy kożystamy z bazy danych kożystamy z metod klasy DbProductService
         {
             
         }
@@ -60,7 +62,7 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
 
         private void Add()
         {
-            var product = new Product { Name = "Product 6", Color = "Red", Price = 66.6m };
+            var product = new Product { Name = "Product 6", Color = "Red", Price = 66.6m, Size = "L" };
 
             productsService.Add(product);
             this.Products.Add(product);
@@ -85,6 +87,27 @@ namespace Sulmar.WPFMVVM.ShopPracz.ViewModels
         {
             productsService.Remove(SelectedProduct.Id);
             this.Products.Remove(SelectedProduct);
+        }
+
+        public ICommand UpdateCommand
+        {
+            get
+            {
+                return new RelayCommand(p => Update(), p => CanUpdate());
+            }
+        }
+
+
+        private void Update()
+        {
+            productsService.Update(SelectedProduct);
+            
+        }
+
+        private bool CanUpdate()
+        {
+            //return IsSelectedProduct && !Products.Any(p => p.Name == SelectedProduct.Name); // można za pomocą zapytań Linq odpytać pobraną kolekcję produktów pod kątem walidacji działań na bazie danych
+            return IsSelectedProduct;
         }
     }
 }

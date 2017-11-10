@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbOrdersService.cs" />
+    <Compile Include="DbProductService.cs" />
     <Compile Include="Migrations\201711090947336_InitialCreate.cs" />
     <Compile Include="Migrations\201711090947336_InitialCreate.Designer.cs">
       <DependentUpon>201711090947336_InitialCreate.cs</DependentUpon>

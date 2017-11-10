@@ -19,7 +19,7 @@
                 Orientation="Horizontal"
                 >
                 <Button Command="{Binding AddCommand}">Add</Button>
-                <Button>Update</Button>
+                <Button Command="{Binding UpdateCommand}">Update</Button>
                 <Button Command="{Binding RemoveCommand}">Remove</Button>
                 
             </StackPanel>

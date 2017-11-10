@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:v="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Views"
         xmlns:vm="clr-namespace:Sulmar.WPFMVVM.ShopPracz.ViewModels;assembly=Sulmar.WPFMVVM.ShopPracz.ViewModels"
+        WindowState="Maximized" 
         mc:Ignorable="d"
         Title="ShellView" Height="300" Width="300">
-    
+    <!-- WindowState - Aplikacja uruchamia się na pełny ekran-->
     
     <Window.DataContext>
         <vm:ShellViewModel />
