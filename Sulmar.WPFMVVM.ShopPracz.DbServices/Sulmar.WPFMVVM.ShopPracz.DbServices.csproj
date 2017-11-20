@@ -43,7 +43,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +59,10 @@
     <Compile Include="Migrations\201711091111195_AddWeightToProduct.cs" />
     <Compile Include="Migrations\201711091111195_AddWeightToProduct.Designer.cs">
       <DependentUpon>201711091111195_AddWeightToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711142121090_201711091111195_AddWeightToProduct.cs" />
+    <Compile Include="Migrations\201711142121090_201711091111195_AddWeightToProduct.Designer.cs">
+      <DependentUpon>201711142121090_201711091111195_AddWeightToProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711091111195_AddWeightToProduct.resx">
       <DependentUpon>201711091111195_AddWeightToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711142121090_201711091111195_AddWeightToProduct.resx">
+      <DependentUpon>201711142121090_201711091111195_AddWeightToProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

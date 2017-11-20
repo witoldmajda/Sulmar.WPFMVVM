@@ -8,9 +8,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="ProductsView">
-    <Page.DataContext>
+    <!-- <Page.DataContext>
         <vm:ProductsViewModel />
-    </Page.DataContext>
+    </Page.DataContext> -->
 
     <Grid>
         <DockPanel>
@@ -25,7 +25,14 @@
             </StackPanel>
             <DataGrid ItemsSource="{Binding Products}"
                   SelectedItem="{Binding SelectedProduct}"
-                  />
+                      AutoGenerateColumns="False"
+                  >
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}" />
+                </DataGrid.Columns>
+            </DataGrid>
+
         </DockPanel>
 
         

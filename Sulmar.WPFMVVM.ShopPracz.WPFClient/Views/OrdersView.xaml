@@ -12,10 +12,10 @@
         >
     
     
-    <Window.DataContext>
+  <!--  <Window.DataContext>
         <vm:OrdersViewModel />
     </Window.DataContext>
-    <!--Twożymy instancję obiektu i podpinamy automatycznie pod dataContext-->
+    Twożymy instancję obiektu i podpinamy automatycznie pod dataContext-->
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded"> <!--podpięcie pod zdarzenie okna -->
@@ -32,8 +32,15 @@
                         <b:ButtonBehavior  Order="{Binding SelectedOrder}"/>
                     </i:Interaction.Behaviors>
                 </Button>
-                    
-                    
+
+                <Border Background="LightBlue" >
+                    <i:Interaction.Behaviors>
+                        <b:DragBehavior />
+                    </i:Interaction.Behaviors>
+                    <TextBlock Text="Drag me around!" />
+                </Border>
+
+
             </DockPanel>
             <!--<TabControl>
             <TabItem Header="Tab 1">Content 1</TabItem>

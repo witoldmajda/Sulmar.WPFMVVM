@@ -5,33 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:v="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Views"
         xmlns:vm="clr-namespace:Sulmar.WPFMVVM.ShopPracz.ViewModels;assembly=Sulmar.WPFMVVM.ShopPracz.ViewModels"
-        WindowState="Maximized" 
+        WindowState="Maximized"
         mc:Ignorable="d"
         Title="ShellView" Height="300" Width="300">
-    <!-- WindowState - Aplikacja uruchamia się na pełny ekran-->
-    
+   
     <Window.DataContext>
         <vm:ShellViewModel />
     </Window.DataContext>
+    
+    
+    
     <Grid>
-
+        
+        
         <DockPanel>
-            <!-- Panel z przyciskami-->
+            
+            <!-- Panel z przyciskami -->
+            
             <StackPanel Orientation="Horizontal"
-                        DockPanel.Dock="Top"
-                        >
-                <Button Content="Produkty" />
-                <Button Content="Zamówienia" />
-
+                        DockPanel.Dock="Top">
+                <Button Content="Produkty" Command="{Binding ShowProductsCommand}" />
+                <Button Content="Zamówienia" Command="{Binding ShowOrdersCommand}" />
             </StackPanel>
-                <!--Zawartość -->
-            <Border 
-                    BorderBrush="Black"
-                BorderThickness="3">
-                <Frame Source="ProductsView.xaml" />
+
+            <!-- Zawartość -->
+
+            <Border BorderBrush="Black"
+                BorderThickness="3" Margin="0,2,0,-2" >
+
+
+                <!-- Odpowiedni widok wstrzykiwany jest za pomocą ViewModelView.xaml -->
+                <Frame x:Name="ShellFrame" Content="{Binding SelectedViewModel, Mode=TwoWay}" />
 
             </Border>
-                    
+
+
         </DockPanel>
         
     </Grid>

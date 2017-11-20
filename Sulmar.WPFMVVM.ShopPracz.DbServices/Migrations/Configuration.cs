@@ -10,6 +10,7 @@ namespace Sulmar.WPFMVVM.ShopPracz.DbServices.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            //AutomaticMigrationsEnabled = true;
             ContextKey = "Sulmar.WPFMVVM.ShopPracz.DbServices.ShopPraczContext";
         }
 

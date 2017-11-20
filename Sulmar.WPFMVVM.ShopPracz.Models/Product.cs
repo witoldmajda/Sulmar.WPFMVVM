@@ -53,7 +53,16 @@ namespace Sulmar.WPFMVVM.ShopPracz.Models
 
         public string Size { get; set; }
 
-      
+       // public float Weight { get; set; }
+
+        public Product()
+        {
+            this.Color = "Blue";
+            this.Name = "Nazwa produktu";
+        }
+
+
+
 
     }
 }

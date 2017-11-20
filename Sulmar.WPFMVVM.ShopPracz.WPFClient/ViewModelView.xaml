@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Sulmar.WPFMVVM.ShopPracz.ViewModels;assembly=Sulmar.WPFMVVM.ShopPracz.ViewModels"
+                    xmlns:v="clr-namespace:Sulmar.WPFMVVM.ShopPracz.WPFClient.Views"
+                    >
+
+    <!-- Plik zawiera powiązanie viewmodel z view -->
+
+    <DataTemplate DataType="{x:Type vm:ProductsViewModel}">
+        <v:ProductsView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProductViewModel}">
+        <v:ProductView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:OrdersViewModel}" >
+        <v:OrdersView />
+    </DataTemplate>
+
+
+</ResourceDictionary>
