@@ -16,7 +16,8 @@
                 
                 
                               
-                <ResourceDictionary Source="Resources/ResourceDictionary.xaml" />
+                <ResourceDictionary Source="Resources/ResourceDictionary.xaml" /> 
+               
                 <!-- Wciąganie pliku z zasobami Resources-->
                 <ResourceDictionary Source="Resources/DataTemplates.xaml" />
                 <!-- Wciąganie pliku z szablonami-->

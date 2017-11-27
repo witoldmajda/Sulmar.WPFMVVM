@@ -17,7 +17,7 @@ namespace Sulmar.WPFMVVM.ShopPracz.WPFClient.Views
     /// <summary>
     /// Interaction logic for OrdersView.xaml
     /// </summary>
-    public partial class OrdersView : Window
+    public partial class OrdersView : Page
     {
         public OrdersView()
         {
