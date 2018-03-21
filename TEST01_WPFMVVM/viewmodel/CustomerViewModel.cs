@@ -14,15 +14,16 @@ namespace TEST01_WPFMVVM.viewmodel
 {
     public class CustomerViewModel : BaseViewModel
     {
-        private readonly ICustomersService _CustomersService;
+        //private readonly ICustomersService _CustomersService;
 
-        public CustomerViewModel(ICustomersService _CustomersService)
+        public CustomerViewModel()
         {
-            this._CustomersService = _CustomersService;
+            //this._CustomersService = _CustomersService;
 
             _Customer = new CustomerModel("Witek");
-            
-            Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
+
+            //Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
+            Customers = new ObservableCollection<CustomerModel>();  //implementacja klasy informującej listę o konieczności zmiany
 
         }
 

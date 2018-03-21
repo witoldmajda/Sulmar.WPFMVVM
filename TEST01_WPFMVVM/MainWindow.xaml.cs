@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TEST01_WPFMVVM.viewmodel;
 
 namespace TEST01_WPFMVVM
 {
@@ -23,8 +22,7 @@ namespace TEST01_WPFMVVM
     {
         public MainWindow()
         {
-            InitializeComponent();
-            //DataContext = new CustomerViewModel();
+            InitializeComponent();            
         }
     }
 }

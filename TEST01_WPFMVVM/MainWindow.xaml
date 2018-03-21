@@ -24,7 +24,7 @@
                   >
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Customer.Name}" />
+                    <DataGridTextColumn Binding="{Binding Name}" />
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
