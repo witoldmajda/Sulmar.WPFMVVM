@@ -57,6 +57,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="interfaces\ICustomersService.cs" />
     <Compile Include="model\CustomerModel.cs" />
+    <Compile Include="services\MocCustomersServices.cs" />
     <Compile Include="viewmodel\BaseViewModel.cs" />
     <Compile Include="viewmodel\CustomerViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -99,8 +100,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
