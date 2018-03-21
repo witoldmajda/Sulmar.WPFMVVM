@@ -93,7 +93,7 @@ namespace TEST01_WPFMVVM.viewmodel
 
         public void Add()
         {
-            var customer = new CustomerModel("mew_Name");
+            var customer = new CustomerModel(Customer.Name);
             //_CustomersService.Add(customer);
             this.Customers.Add(customer);
         }

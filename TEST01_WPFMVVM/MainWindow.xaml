@@ -14,7 +14,7 @@
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" VerticalAlignment="Top">
                 <Label>Customer Name</Label>
-                <TextBox Text="{Binding Customer.Name}" Width="150" />
+                <TextBox x:Name="FillBox" Text="{Binding Customer.Name}" Width="150" />
                 <Button Command="{Binding UpdateCommand}">Update</Button>
                 <Button Command="{Binding AddCommand}">Add</Button>
             </StackPanel>
