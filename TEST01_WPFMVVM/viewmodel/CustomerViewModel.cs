@@ -9,22 +9,38 @@ using TEST01_WPFMVVM.Commands;
 using System.Windows;
 using System.Collections.ObjectModel;
 using TEST01_WPFMVVM.interfaces;
+using TEST01_WPFMVVM.services;
 
 namespace TEST01_WPFMVVM.viewmodel
 {
     public class CustomerViewModel : BaseViewModel
     {
-        //private readonly ICustomersService _CustomersService;
+        private readonly ICustomersService _CustomersService;
 
-        public CustomerViewModel()
+        
+        public CustomerViewModel(ICustomersService _CustomersService)
         {
-            //this._CustomersService = _CustomersService;
+            this._CustomersService = _CustomersService;
 
             _Customer = new CustomerModel("Witek");
 
-            //Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
-            Customers = new ObservableCollection<CustomerModel>();  //implementacja klasy informującej listę o konieczności zmiany
+            Load();
 
+            //Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
+            
+
+        }
+
+        public CustomerViewModel()
+            :this(new MocCustomersServices()) //używamy gdy kożystamy z Moc
+        {
+
+        }
+
+        private void Load()
+        {
+            Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
+            //pobranie listy z bazy np Moc
         }
 
         private ICollection<CustomerModel> _Customers;   
@@ -54,48 +70,70 @@ namespace TEST01_WPFMVVM.viewmodel
             }
         }
 
-        private bool CanUpdate()
-        {
-            return true;            
-        }
-
-
-
-
+       
         private ICommand _UpdateCommand;
 
         public ICommand UpdateCommand
         {
             get
             {
-                return new RelayCommand(p => SaveChanges(), p => CanUpdate());
+                return new RelayCommand(p => Update(), p => CanUpdate());
                 
 
             }
             set { _UpdateCommand = value; }
         }
 
-
-
-        public void SaveChanges()
+        private void Update()
         {
-            MessageBox.Show("update");
+            _CustomersService.Update(SelectedCustomer);
         }
 
+        private bool CanUpdate()
+        {
+           // return IsSelectedCustomer && !Customers.Any(c => c.Name == SelectedCustomer.Name); // można za pomocą zapytań Linq odpytać pobraną kolekcję produktów pod kątem walidacji działań na bazie danych
+            return IsSelectedCustomer;
+        }
 
         public ICommand AddCommand
         {
             get
             {
-                return new RelayCommand(p => Add());
+                return new RelayCommand(c => Add());
             }
         }
 
         public void Add()
         {
             var customer = new CustomerModel(Customer.Name);
+            _CustomersService.Add(customer);
             //_CustomersService.Add(customer);
             this.Customers.Add(customer);
+        }
+
+
+        public ICommand RemoveCommand
+        {
+            get
+            {
+                return new RelayCommand(c => Remove(), c => CanRemove());
+            }
+        }
+
+        private bool IsSelectedCustomer => SelectedCustomer != null;
+            
+
+        public CustomerModel SelectedCustomer { get; set; }
+
+        private bool CanRemove()
+        {
+            return IsSelectedCustomer;
+        }
+
+        private void Remove()
+        {
+            _CustomersService.Remove(SelectedCustomer.Id);
+            this.Customers.Remove(SelectedCustomer);
         }
     }
 }
