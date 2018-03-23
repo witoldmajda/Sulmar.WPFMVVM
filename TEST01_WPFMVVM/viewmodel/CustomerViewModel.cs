@@ -22,6 +22,7 @@ namespace TEST01_WPFMVVM.viewmodel
             this._CustomersService = _CustomersService;
 
              _Customer = new CustomerModel("Witek");
+            this.IsEnabled = false;
 
             //Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
             Load();
@@ -69,7 +70,7 @@ namespace TEST01_WPFMVVM.viewmodel
         private bool CanUpdate()
         {
             //return IsSelectedCustomer; 
-            return true;
+            return this.IsEnabled;
         }
         
 
@@ -120,12 +121,52 @@ namespace TEST01_WPFMVVM.viewmodel
         private bool CanRemove()
         {
             //return IsSelectedCustomer;
-            return true;
+            return this.IsEnabled;
         }
 
-        private bool IsSelectedCustomer => SelectedCustomer != null;
+        //private bool IsSelectedCustomer => SelectedCustomer != null;
+       // private bool IsSelectedCustomer;
+        
 
-        public CustomerModel SelectedCustomer { get; set; }
+        private CustomerModel _SelectedCustomer;
+
+        public CustomerModel SelectedCustomer
+        {
+            get
+            {
+                return _SelectedCustomer;                
+            }
+            set
+            {
+                if (_SelectedCustomer != value)
+                {
+                    _SelectedCustomer = value;
+                    OnPropertyChanged();
+                   // IsSelectedCustomer = true;
+                    this.IsEnabled = true;
+                    if (_SelectedCustomer == null)
+                    {
+                        this.IsEnabled = true;
+                        //this.IsSelectedCustomer = true;
+                    }
+                }
+            }
+        }
+
+        private bool _IsEnabled;
+        public bool IsEnabled
+        {
+            get
+            {
+                return _IsEnabled;
+            }
+            set
+            {
+                _IsEnabled = value;
+                OnPropertyChanged();
+
+            }
+        }
 
         private void Remove()
         {
