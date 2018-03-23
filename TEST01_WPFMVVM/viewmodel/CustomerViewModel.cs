@@ -17,32 +17,29 @@ namespace TEST01_WPFMVVM.viewmodel
     {
         private readonly ICustomersService _CustomersService;
 
-        
         public CustomerViewModel(ICustomersService _CustomersService)
         {
             this._CustomersService = _CustomersService;
 
-            _Customer = new CustomerModel("Witek");
-
-            Load();
+             _Customer = new CustomerModel("Witek");
 
             //Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
-            
+            Load();
 
         }
 
         public CustomerViewModel()
-            :this(new MocCustomersServices()) //używamy gdy kożystamy z Moc
+            : this(new MocCustomersServices()) // gdy kożystamy z Moc używamy metod Moc
+            //: this(new DbProductService()) // gdy kożystamy z bazy danych kożystamy z metod klasy DbProductService
         {
 
         }
+
 
         private void Load()
         {
             Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
-            //pobranie listy z bazy np Moc
         }
-
         private ICollection<CustomerModel> _Customers;   
 
         public ICollection<CustomerModel> Customers
@@ -53,10 +50,7 @@ namespace TEST01_WPFMVVM.viewmodel
                 _Customers = value;
                 OnPropertyChanged();
             }
-        }
-
-       
-
+        }            
 
         private CustomerModel _Customer;
 
@@ -70,7 +64,15 @@ namespace TEST01_WPFMVVM.viewmodel
             }
         }
 
-       
+
+
+        private bool CanUpdate()
+        {
+            //return IsSelectedCustomer; 
+            return true;
+        }
+        
+
         private ICommand _UpdateCommand;
 
         public ICommand UpdateCommand
@@ -84,22 +86,19 @@ namespace TEST01_WPFMVVM.viewmodel
             set { _UpdateCommand = value; }
         }
 
-        private void Update()
+
+
+        public void Update()
         {
             _CustomersService.Update(SelectedCustomer);
         }
 
-        private bool CanUpdate()
-        {
-           // return IsSelectedCustomer && !Customers.Any(c => c.Name == SelectedCustomer.Name); // można za pomocą zapytań Linq odpytać pobraną kolekcję produktów pod kątem walidacji działań na bazie danych
-            return IsSelectedCustomer;
-        }
 
         public ICommand AddCommand
         {
             get
             {
-                return new RelayCommand(c => Add());
+                return new RelayCommand(p => Add());
             }
         }
 
@@ -107,10 +106,8 @@ namespace TEST01_WPFMVVM.viewmodel
         {
             var customer = new CustomerModel(Customer.Name);
             _CustomersService.Add(customer);
-            //_CustomersService.Add(customer);
             this.Customers.Add(customer);
         }
-
 
         public ICommand RemoveCommand
         {
@@ -120,15 +117,15 @@ namespace TEST01_WPFMVVM.viewmodel
             }
         }
 
-        private bool IsSelectedCustomer => SelectedCustomer != null;
-            
-
-        public CustomerModel SelectedCustomer { get; set; }
-
         private bool CanRemove()
         {
-            return IsSelectedCustomer;
+            //return IsSelectedCustomer;
+            return true;
         }
+
+        private bool IsSelectedCustomer => SelectedCustomer != null;
+
+        public CustomerModel SelectedCustomer { get; set; }
 
         private void Remove()
         {
