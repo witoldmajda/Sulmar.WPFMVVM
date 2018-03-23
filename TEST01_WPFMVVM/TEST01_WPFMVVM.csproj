@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7AD8A126-7F43-4A9D-B493-78F02A81D11A}</ProjectGuid>
+    <ProjectGuid>{53AADE31-EBA6-43B8-8502-D1EDB2684A90}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TEST01_WPFMVVM</RootNamespace>
     <AssemblyName>TEST01_WPFMVVM</AssemblyName>

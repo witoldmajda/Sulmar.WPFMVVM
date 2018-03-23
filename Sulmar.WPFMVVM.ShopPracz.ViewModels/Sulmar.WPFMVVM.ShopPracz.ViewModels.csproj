@@ -47,27 +47,5 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShellViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sulmar.WPFMVVM.Common4\Sulmar.WPFMVVM.Common4.csproj">
-      <Project>{9ffc5531-f9ff-4b67-8e13-bd4938feb44f}</Project>
-      <Name>Sulmar.WPFMVVM.Common4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sulmar.WPFMVVM.Common\Sulmar.WPFMVVM.Common.csproj">
-      <Project>{27644112-E1EB-45F7-9478-799BBEDD22A9}</Project>
-      <Name>Sulmar.WPFMVVM.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sulmar.WPFMVVM.ShopPracz.DbServices\Sulmar.WPFMVVM.ShopPracz.DbServices.csproj">
-      <Project>{62B3285E-BD6F-43F6-BD86-2231F8FB1281}</Project>
-      <Name>Sulmar.WPFMVVM.ShopPracz.DbServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sulmar.WPFMVVM.ShopPracz.Models\Sulmar.WPFMVVM.ShopPracz.Models.csproj">
-      <Project>{2C9A1323-21BB-41E0-A849-9070079527C0}</Project>
-      <Name>Sulmar.WPFMVVM.ShopPracz.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sulmar.WPFMVVM.ShopPracz.Services\Sulmar.WPFMVVM.ShopPracz.Services.csproj">
-      <Project>{85B559CD-C9AD-464A-9EC5-E0D9B70CB715}</Project>
-      <Name>Sulmar.WPFMVVM.ShopPracz.Services</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

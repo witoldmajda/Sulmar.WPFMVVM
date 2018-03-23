@@ -13,6 +13,11 @@ namespace TEST01_WPFMVVM.model
             Name = customerName;
         }
 
+        public CustomerModel()
+        {
+           
+        }
+
         public int Id { get; set; }
 
 

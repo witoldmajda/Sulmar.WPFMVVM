@@ -16,6 +16,7 @@
                 <Label>Customer Name</Label>
                 <TextBox x:Name="FillBox" Text="{Binding Customer.Name}" Width="150" />
                 <Button Command="{Binding UpdateCommand}">Update</Button>
+                <Button Command="{Binding RemoveCommand}">Remove</Button>
                 <Button Command="{Binding AddCommand}">Add</Button>
             </StackPanel>
             <DataGrid ItemsSource="{Binding Customers}"
@@ -27,6 +28,10 @@
                     <DataGridTextColumn Binding="{Binding Name}" />
                 </DataGrid.Columns>
             </DataGrid>
+
+          
+
+
         </DockPanel>
     </Grid>
     

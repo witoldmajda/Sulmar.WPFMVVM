@@ -16,34 +16,40 @@ namespace TEST01_WPFMVVM.services
         {
             customers = new List<CustomerModel>
             {
-                //new CustomerModel {Id=1, Name = "Name01" },
-                //new CustomerModel {Id=2, Name = "Name02" },
+                new CustomerModel {Id=1, Name = "Name01" },
+                new CustomerModel {Id=2, Name = "Name02" },
             };
         }
        
         public void Add(CustomerModel customer)
         {
-            throw new NotImplementedException();
+            customer.Id = customers.Max(c => c.Id) + 1;
+            customers.Add(customer);
         }
 
         public ICollection<CustomerModel> Get()
         {
-            throw new NotImplementedException();
+            return customers;
         }
 
         public CustomerModel Get(int id)
         {
-            throw new NotImplementedException();
+            return customers.Single(c => c.Id == id);//wyrażenie Linq
         }
 
         public CustomerModel Get(string name)
         {
-            throw new NotImplementedException();
+            //jeśli będzie więcej niż 1 to zwróci wyjątek
+            return customers.Single(c => c.Name == name);
+
+            //jeśli będzie więcej niż 1 to zwraca pierwszy element
+            // return products.First(p => p.Name == name);
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            var customer = Get(id);
+            customers.Remove(customer);
         }
 
         public void Update(CustomerModel customer)
