@@ -10,6 +10,7 @@ using System.Windows;
 using System.Collections.ObjectModel;
 using TEST01_WPFMVVM.interfaces;
 using TEST01_WPFMVVM.services;
+using System.Timers;
 
 namespace TEST01_WPFMVVM.viewmodel
 {
@@ -21,7 +22,7 @@ namespace TEST01_WPFMVVM.viewmodel
         {
             this._CustomersService = _CustomersService;
 
-             _Customer = new CustomerModel("Witek");
+            _Customer = new CustomerModel("Witek");
             this.IsEnabled = false;
 
             //Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
@@ -41,7 +42,8 @@ namespace TEST01_WPFMVVM.viewmodel
         {
             Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
         }
-        private ICollection<CustomerModel> _Customers;   
+
+       private ICollection<CustomerModel> _Customers;   
 
         public ICollection<CustomerModel> Customers
         {
@@ -70,7 +72,8 @@ namespace TEST01_WPFMVVM.viewmodel
         private bool CanUpdate()
         {
             //return IsSelectedCustomer; 
-            return this.IsEnabled;
+            //return this.IsEnabled;
+            return true;
         }
         
 
@@ -81,8 +84,6 @@ namespace TEST01_WPFMVVM.viewmodel
             get
             {
                 return new RelayCommand(p => Update(), p => CanUpdate());
-                
-
             }
             set { _UpdateCommand = value; }
         }
@@ -99,16 +100,64 @@ namespace TEST01_WPFMVVM.viewmodel
         {
             get
             {
-                return new RelayCommand(p => Add());
+                return new RelayCommand(c => Add());
             }
         }
 
         public void Add()
         {
-            var customer = new CustomerModel(Customer.Name);
+            // var customer = new CustomerModel(Customer.Name);
+            var customer = new CustomerModel(CustomerName);
+            _CustomersService.Add(customer);
+            this.Customers.Add(customer);
+            this.Text_02 = this.CustomerName;
+        }
+
+        
+        public ICommand EditCommand
+        {
+            get
+            {
+                return new RelayCommand(c => Edit(), c => CanEdit());
+            }
+        }
+
+        private bool CanEdit()
+        {
+            return true;
+        }
+
+        private void Edit()
+        {
+            var customer = new CustomerModel(this.Text_02);
             _CustomersService.Add(customer);
             this.Customers.Add(customer);
         }
+
+
+        private string _Text_02;        
+        public string Text_02
+        {
+            get { return _Text_02; }
+            set { _Text_02 = value; OnPropertyChanged(); }
+        }
+
+
+
+        //public ICommand EditCommand
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(c => Edit(), c => CanEdit());
+        //    }
+        //}
+
+        //private bool CanEdit()
+        //{
+        //    return true;
+        //}
+
+
 
         public ICommand RemoveCommand
         {
@@ -121,7 +170,8 @@ namespace TEST01_WPFMVVM.viewmodel
         private bool CanRemove()
         {
             //return IsSelectedCustomer;
-            return this.IsEnabled;
+            //return this.IsEnabled;
+            return true;
         }
 
         //private bool IsSelectedCustomer => SelectedCustomer != null;
@@ -133,25 +183,31 @@ namespace TEST01_WPFMVVM.viewmodel
         public CustomerModel SelectedCustomer
         {
             get
-            {
+            {                
                 return _SelectedCustomer;                
             }
             set
             {
-                if (_SelectedCustomer != value)
-                {
-                    _SelectedCustomer = value;
-                    OnPropertyChanged();
-                   // IsSelectedCustomer = true;
-                    this.IsEnabled = true;
-                    if (_SelectedCustomer == null)
-                    {
-                        this.IsEnabled = true;
-                        //this.IsSelectedCustomer = true;
-                    }
-                }
+                _SelectedCustomer = value;
+                OnPropertyChanged();                                
             }
         }
+
+        
+
+    private string  _CustomerName;
+
+        public string CustomerName
+        {
+            get { return _CustomerName; }
+            set
+            {
+                _CustomerName = value;               
+                OnPropertyChanged();
+            }
+        }
+
+
 
         private bool _IsEnabled;
         public bool IsEnabled
@@ -169,7 +225,7 @@ namespace TEST01_WPFMVVM.viewmodel
         }
 
         private void Remove()
-        {
+        {           
             _CustomersService.Remove(SelectedCustomer.Id);
             this.Customers.Remove(SelectedCustomer);
         }

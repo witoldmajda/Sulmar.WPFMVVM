@@ -14,13 +14,15 @@
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" VerticalAlignment="Top">
                 <Label>Customer Name</Label>
-                <TextBox x:Name="FillBox" Text="{Binding Customer.Name}" Width="150" />
+                <TextBox x:Name="FillBox" Text="{Binding CustomerName, Mode=TwoWay}" Width="150" />
                 <Button Command="{Binding UpdateCommand}">Update</Button>
                 <Button Command="{Binding RemoveCommand}" IsEnabled="{Binding IsEnabled}">Remove</Button>
                 <Button Command="{Binding AddCommand}">Add</Button>
+                <Button Command="{Binding EditCommand}">Edit</Button>
+                <TextBox x:Name="text02" Text="{Binding Text_02}" Width="140"/>
             </StackPanel>
             <DataGrid ItemsSource="{Binding Customers}"
-                  SelectedItem="{Binding SelectedCustomer}"
+                  SelectedItem="{Binding SelectedCustomer}"                      
                       AutoGenerateColumns="False"
                   >
 
@@ -28,12 +30,15 @@
                     <DataGridTextColumn Binding="{Binding Name}" />
                 </DataGrid.Columns>
             </DataGrid>
+            
 
-          
+
 
 
         </DockPanel>
+        
     </Grid>
+    
     
     
 </Window>
